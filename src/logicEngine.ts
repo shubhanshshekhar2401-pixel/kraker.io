@@ -16,8 +16,7 @@ export async function getAIClassification(imageFile: File | string): Promise<AIC
 
   // IMPORTANT:
   // Backend endpoint is /predict, not root (/)
-  // Using ngrok temporary URL for external access
-  // Replace with production API later
+  // Using Render production URL
   const API_URL = "https://kraker-backend.onrender.com/predict";
 
   try {
@@ -62,13 +61,14 @@ export async function getAIClassification(imageFile: File | string): Promise<AIC
       kind: typeMapping[data.type] || CrackKind.Structural,
       pattern: CrackPattern.Linear, // Pattern detection might be a future backend feature
       severity: data.confidence > 80 ? CrackSeverity.Severe : (data.confidence > 50 ? CrackSeverity.Moderate : CrackSeverity.Minor),
+      surface: SurfaceType.Wall, // Default surface
       confidence_score: data.confidence,
       cause: data.cause,
       fix: data.fix
     } as any;
   } catch (error) {
     console.error("AI Prediction Error:", error);
-    throw new Error("Connection failed. Ensure backend + ngrok are running.");
+    throw new Error("Connection failed. Ensure backend at Render is active.");
   }
 }
 
