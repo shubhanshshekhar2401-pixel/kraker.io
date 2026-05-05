@@ -18,7 +18,7 @@ export async function getAIClassification(imageFile: File | string): Promise<AIC
   // Backend endpoint is /predict, not root (/)
   // Using ngrok temporary URL for external access
   // Replace with production API later
-  const API_URL = "https://yogurt-rocket-handrail.ngrok-free.dev/predict";
+  const API_URL = "https://kraker-backend.onrender.com/predict";
 
   try {
     console.log(`[Diagnostic] Initiating transmission to: ${API_URL}`);
