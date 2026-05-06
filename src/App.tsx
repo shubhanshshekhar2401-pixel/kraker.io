@@ -6,6 +6,7 @@
 import { useState, useRef, useEffect, ChangeEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Camera, FileText, Activity, CheckCircle2, ChevronRight, RotateCcw, ShieldCheck, Download, AlertTriangle, Info, Zap } from 'lucide-react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AppState, AIClassification, QuestionnaireState, LocationType, CrackKind, CrackPattern, CrackSeverity, SurfaceType } from './types';
 import { getAIClassification, generateDiagnosis } from './logicEngine';
 import { QUESTIONNAIRE_TREE } from './constants';
@@ -172,6 +173,7 @@ export default function App() {
           </AnimatePresence>
         </section>
       </main>
+      <SpeedInsights />
     </div>
   );
 }
